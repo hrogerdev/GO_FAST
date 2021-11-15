@@ -1,0 +1,11 @@
+{
+  "apps": [
+    {
+      "app_id": "app_610f1050-111d-4cb3-9eec-67ab475d3702",
+      "org_id": "user_2b8e5c8f-08bd-4c06-afc9-d32af7de5d5d",
+      "deploy_url": "https://push-n2-par-clevercloud-customers.services.clever-cloud.com/app_610f1050-111d-4cb3-9eec-67ab475d3702.git",
+      "name": "GO_FAST",
+      "alias": "GO_FAST"
+    }
+  ]
+}

@@ -83,3 +83,4 @@ production:
   database: GO_FAST_production
   username: GO_FAST
   password: <%= ENV['GO_FAST_DATABASE_PASSWORD'] %>
+  url: <%= ENV['POSTGRESQL_ADDON_URI'] %>
