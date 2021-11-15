@@ -10,10 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_15_145033) do
+ActiveRecord::Schema.define(version: 2021_11_15_160008) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "mules", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "transportation_means"
+    t.text "description"
+    t.integer "rate_per_km_per_kg"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_mules_on_user_id"
+  end
+
+  create_table "offers", force: :cascade do |t|
+    t.bigint "mule_id", null: false
+    t.bigint "user_id", null: false
+    t.string "destination"
+    t.integer "weight"
+    t.string "drug_type"
+    t.integer "commission"
+    t.string "starting_point"
+    t.integer "distance"
+    t.string "status", default: "pending"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["mule_id"], name: "index_offers_on_mule_id"
+    t.index ["user_id"], name: "index_offers_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +49,12 @@ ActiveRecord::Schema.define(version: 2021_11_15_145033) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "username"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "mules", "users"
+  add_foreign_key "offers", "mules"
+  add_foreign_key "offers", "users"
 end
