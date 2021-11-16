@@ -1,4 +1,5 @@
 class ProfilesController < ApplicationController
+
     def show
         @current_user = current_user
         if current_user.mules
