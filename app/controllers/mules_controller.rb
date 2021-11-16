@@ -10,7 +10,7 @@ class MulesController < ApplicationController
   def create
     @mule = Mule.new(mule_params)
     @mule.user = current_user
-    @mule.description = current_user.description
+    # @mule.description = current_user.description
     if @mule.save!
       redirect_to mule_path(@mule)
     else
