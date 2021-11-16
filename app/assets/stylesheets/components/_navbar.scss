@@ -1,6 +1,21 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background: #223843;
+  color: #EFF1F3;
+  margin-top: 0;
+  padding-top: 3rem;
+  position: fixed;
+  width: 100%;
+
+  a {
+    color: #EFF1F3;
+    text-decoration: none;
+    position: absolute;
+    top: 0.6rem;
+    right: 1rem;
+    // font-weight: bold;
+    font-size: 1.2rem;
+  }
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -9,4 +24,15 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+
+.navbar-lewagon .navbar-brand{
+  margin: 0;
+  position: absolute;
+  bottom: 0.6rem;
+  left: 1rem;
+}
+
+.see-through {
+  background-color: rgba(0,0,0,0);
 }
