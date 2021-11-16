@@ -19,6 +19,7 @@
   font-size: 20px;
   font-weight: bold;
   margin: 0;
+  color: #223843;
 }
 
 .card-mule p {
@@ -27,8 +28,21 @@
   opacity: .7;
   margin-bottom: 0;
   margin-top: 8px;
+  color: #223843;
 }
 
 .card-mule .card-mule-infos {
   padding: 16px;
+}
+
+a {
+  color: #223843;
+  text-decoration: none;
+  transition: 0,2s;
+}
+
+a:hover {
+  color: #D77A61;
+  text-decoration: none;
+  transition: 0,2s;
 }
