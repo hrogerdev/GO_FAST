@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'mules/index'
   devise_for :users
   root to: 'pages#home'
 
