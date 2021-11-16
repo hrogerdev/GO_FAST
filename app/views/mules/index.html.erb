@@ -21,8 +21,8 @@
     %>
       <img src= 'https://cdnmundo1.img.sputniknews.com/img/108565/78/1085657854_0:555:1500:1367_1000x541_80_0_0_ab86277e9d4cb8f1a28c69f7cd8438f4.jpg' />
       <div class="card-mule-infos">
-        <h2> <%= mule.user.username  %> </h2>
-        <p><strong>Location: </strong></p>
+        <h2> <%= link_to mule.user.username, mule_path(mule) %></h2>
+        <p><strong>Location: </strong><%= mule.location %></p>
         <p> <%= mule.description  %></p>
         <p>Rate: <strong><%= mule.rate_per_km_per_kg %> €</strong></p>
       </div>

@@ -1,21 +1,48 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+require "open-uri"
 
-user = User.create!(username: "Pablo Escobar", email: "pablo@escobar.com", password: "123456", photo: "https://res.cloudinary.com/ddk5g0o9g/image/upload/v1637058577/walterW_rvbhqx.jpg")
-user_two = User.create!(username: "Walter White", email: "breaking1@badi.com", password: "123456", photo: "https://res.cloudinary.com/ddk5g0o9g/image/upload/v1637058577/walterW_rvbhqx.jpg")
-user_three = User.create!(username: "Corine Whote", email: "breaking2@bada.com", password: "123456", photo: "https://res.cloudinary.com/ddk5g0o9g/image/upload/v1637058577/walterW_rvbhqx.jpg")
-user_four = User.create!(username: "Sophie Whute", email: "breaking3@badu.com", password: "123456", photo: "https://res.cloudinary.com/ddk5g0o9g/image/upload/v1637058577/walterW_rvbhqx.jpg")
-user_five = User.create!(username: "Maxime Whyte", email: "breaking4@bade.com", password: "123456", photo: "https://res.cloudinary.com/ddk5g0o9g/image/upload/v1637058577/walterW_rvbhqx.jpg")
-user_six = User.create!(username: "Boris Whate", email: "breaking5@bado.com", password: "123456", photo: "https://res.cloudinary.com/ddk5g0o9g/image/upload/v1637058577/walterW_rvbhqx.jpg")
-user_seven= User.create!(username: "Peter Whoute", email: "breaking6@bady.com", password: "123456", photo: "https://res.cloudinary.com/ddk5g0o9g/image/upload/v1637058577/walterW_rvbhqx.jpg")
-user_eight = User.create!(username: "Henry Whiate", email: "breaking7@badaa.com", password: "123456", photo: "https://res.cloudinary.com/ddk5g0o9g/image/upload/v1637058577/walterW_rvbhqx.jpg")
-user_nine = User.create!(username: "SamuelWhute", email: "breaking8@badou.com", password: "123456", photo: "https://res.cloudinary.com/ddk5g0o9g/image/upload/v1637058577/walterW_rvbhqx.jpg")
-user_ten = User.create!(username: "Albert Whaute", email: "breaking9@badu.com", password: "123456", photo: "https://res.cloudinary.com/ddk5g0o9g/image/upload/v1637058577/walterW_rvbhqx.jpg")
+Offer.destroy_all
+Mule.destroy_all
+User.destroy_all
+
+user = User.new(username: "Pablo Escobar", email: "pablo@escobar.com", password: "123456")
+file = URI.open("https://res.cloudinary.com/ddk5g0o9g/image/upload/v1637058577/walterW_rvbhqx.jpg")
+user.photo.attach({io: file, filename: "photo.png", content_type: "image/png"})
+
+user_two = User.new(username: "Walter White", email: "breaking1@badi.com", password: "123456")
+file = URI.open("https://res.cloudinary.com/ddk5g0o9g/image/upload/v1637058577/walterW_rvbhqx.jpg")
+user_two.photo.attach({io: file, filename: "photo.png", content_type: "image/png"})
+
+user_three = User.new(username: "Corine Whote", email: "breaking2@bada.com", password: "123456")
+file = URI.open("https://res.cloudinary.com/ddk5g0o9g/image/upload/v1637058577/walterW_rvbhqx.jpg")
+user_three.photo.attach({io: file, filename: "photo.png", content_type: "image/png"})
+
+user_four = User.new(username: "Sophie Whute", email: "breaking3@badu.com", password: "123456")
+file = URI.open("https://res.cloudinary.com/ddk5g0o9g/image/upload/v1637058577/walterW_rvbhqx.jpg")
+user_four.photo.attach({io: file, filename: "photo.png", content_type: "image/png"})
+
+user_five = User.new(username: "Maxime Whyte", email: "breaking4@bade.com", password: "123456")
+file = URI.open("https://res.cloudinary.com/ddk5g0o9g/image/upload/v1637058577/walterW_rvbhqx.jpg")
+user_five.photo.attach({io: file, filename: "photo.png", content_type: "image/png"})
+
+user_six = User.new(username: "Boris Whate", email: "breaking5@bado.com", password: "123456")
+file = URI.open("https://res.cloudinary.com/ddk5g0o9g/image/upload/v1637058577/walterW_rvbhqx.jpg")
+user_six.photo.attach({io: file, filename: "photo.png", content_type: "image/png"})
+
+user_seven= User.new(username: "Peter Whoute", email: "breaking6@bady.com", password: "123456")
+file = URI.open("https://res.cloudinary.com/ddk5g0o9g/image/upload/v1637058577/walterW_rvbhqx.jpg")
+user_seven.photo.attach({io: file, filename: "photo.png", content_type: "image/png"})
+
+user_eight = User.new(username: "Henry Whiate", email: "breaking7@badaa.com", password: "123456")
+file = URI.open("https://res.cloudinary.com/ddk5g0o9g/image/upload/v1637058577/walterW_rvbhqx.jpg")
+user_eight.photo.attach({io: file, filename: "photo.png", content_type: "image/png"})
+
+user_nine = User.new(username: "SamuelWhute", email: "breaking8@badou.com", password: "123456")
+file = URI.open("https://res.cloudinary.com/ddk5g0o9g/image/upload/v1637058577/walterW_rvbhqx.jpg")
+user_nine.photo.attach({io: file, filename: "photo.png", content_type: "image/png"})
+
+user_ten = User.new(username: "Albert Whaute", email: "breaking9@badu.com", password: "123456")
+file = URI.open("https://res.cloudinary.com/ddk5g0o9g/image/upload/v1637058577/walterW_rvbhqx.jpg")
+user_ten.photo.attach({io: file, filename: "photo.png", content_type: "image/png"})
 
 mule = Mule.new(transportation_means: "plane", description: "fast and reliable", rate_per_km_per_kg: 2, location: "Manilla")
 mule.user = user
