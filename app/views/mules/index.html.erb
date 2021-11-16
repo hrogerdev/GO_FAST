@@ -1,2 +1,23 @@
-<h1>Mules#index</h1>
-<p>Find me in app/views/mules/index.html.erb</p>
+<h1 class="text-center m-5">Find the best mule for you</h1>
+
+<%= simple_form_for :search, url: root_path, method: :get do |f| %>
+  <div class="search-form-control form-group mx-5 mb-5">
+    <input class="form-control string required" type="text" name="search[query]" id="search_query" />
+    <button name="button" type="submit" class="btn btn-flat">
+      <i class="fas fa-search"></i> Search your location
+    </button>
+  </div>
+<% end %>
+
+<div class="cards mx-5">
+  <% @mules.each do |mule| %>
+    <div class="card-mule">
+      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+      <div class="card-mule-infos">
+        <h2> Location </h2>
+        <p> <%= mule.description  %></p>
+        <p>Rate: <strong><%= mule.rate_per_km_per_kg %> €</strong></p>
+      </div>
+    </div>
+  <% end %>
+</div>
