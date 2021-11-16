@@ -1,10 +1,27 @@
-.btn-login {
-  background-color: #DBD3D8;
+.btn-signup {
+  transition: 0.5s;
+  background-color: #D8B4A0;
   padding: 0.5rem 1rem;
   color: #EFF1F3;
   border-radius: 5px;
 }
+.btn-signup:hover {
+  transition: 0.5s;
+  background-color: #DBD3D8;
+  color: #D77A61;
+  text-decoration: none;
+}
 
-.btn-signup {
-
+.btn-login {
+  transition: 0.5s;
+  background-color: #D8B4A0;
+  padding: 0.5rem 1rem;
+  color: #EFF1F3;
+  border-radius: 5px;
+}
+.btn-login:hover {
+  transition: 0.5s;
+  background-color: #DBD3D8;
+  color: #D77A61;
+  text-decoration: none;
 }
