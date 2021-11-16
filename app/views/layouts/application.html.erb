@@ -14,10 +14,15 @@
   <body>
     <div class="navbar-lewagon">
       <img class="navbar-brand" src="#">
-      <%= link_to "Login", new_user_session_path %>
       <% if current_user %>
-     <%= cl_image_tag current_user.photo.key, class: "avatar-bordered" %>
-     <% end %>
+        <%= link_to "Log out", destroy_user_session_path, :method => :delete, :confirm => "You sure?" %>
+        <%= link_to profile_path do %>
+          <img class="avatar" src="<%= current_user.photo %>">
+            <%# <%= image_tag "image.jpg", class: "avatar" %>
+        <% end %> 
+      <% else %>
+        <%= link_to "Login", new_user_session_path %>
+      <% end %>
   </div>
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
