@@ -1,4 +1,11 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-<%= cl_image_tag("https://res.cloudinary.com/ddk5g0o9g/image/upload/v1636737547/25bc0en2a01vh8959zrg2e02twiu.png",
-      width: 400, height: 300, crop: :fill) %>
+
+<div class="banner-login" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://stocktonpropeller.com/wp-content/uploads/2020/06/What-Type-of-License-Do-you-Need-to-Fly-a-Twin-Blade-Propeller-Plane-1-resized.jpg);">
+  <div class="container">
+    <h1>Le Wagon brings <strong>tech skills</strong> to <strong>creative people</strong>!</h1>
+    <p>Change your life and learn to code at one of our campuses around the world.</p>
+    <%= link_to "Sign-up",  new_user_registration_path , class: "btn-signup"%>
+    <%= link_to "login",  new_user_registration_path , class: "btn-login"%>
+
+
+  </div>
+</div>
