@@ -6,3 +6,25 @@
     <%= @current_user.email %>
     </p>
 </div>
+
+<% if @mules %>
+    <% @mules.each do %>
+    <% end %>
+<% end %>
+
+<div class="container mt-5">
+        <%= simple_form_for @mule do |f| %>
+      <div class="row">
+         <div class="col-5">
+            <%= f.input :transportation_means %>
+        </div>
+         <div class="col-4">
+            <%= f.input :rate_per_km_per_kg  %>      
+        </div>
+        <div class="col-3">
+            <%= f.button :submit, class: "btn-login", style: "width:100%; margin-top:1.8rem;"%>     
+        </div>
+        <% end %>
+  
+    </div>
+</div>

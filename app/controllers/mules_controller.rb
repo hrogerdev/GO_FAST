@@ -6,4 +6,8 @@ class MulesController < ApplicationController
   def show
     @mule = Mule.find(params[:id])
   end
+
+  def create
+  end
+
 end
