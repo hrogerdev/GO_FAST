@@ -1,0 +1,50 @@
+.mule-info-card {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  height: 30rem;
+}
+
+.mule-info-card > img {
+  height: 150px;
+
+  object-fit: cover;
+}
+
+.mule-info-card h2 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin: 0;
+  color: #223843;
+}
+
+.mule-info-card p {
+  font-size: 2rem;
+  opacity: .8;
+  margin: 0;
+  color: #223843;
+}
+
+
+.mule-info-card .mule-profile-infos {
+  padding: 24px;
+  display: flex;
+  align-items: center;
+}
+
+.mule-profile-infos .card-mule-user {
+  width: 180px;
+  object-fit: cover;
+  height: 180px;
+}
+
+.mule-info-card .mule-profile-description {
+
+  background: #d8b4a0a8;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  height: 20rem;
+}
+
+.mule-profile-infos .mule-details {
+  margin-left: 40px;
+}
