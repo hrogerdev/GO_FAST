@@ -1,8 +1,9 @@
 <div class="profile-container">
-    <%# <%= current_user.photo %>
-    <img class="avatar-large" src="<%= current_user.photo %>">
+    <img class="avatar-large" src="<%= cl_image_path current_user.photo.key, height: 300, crop: :fill if current_user.photo.attached? %>">
     <p class="profile-info">
-    <%= @current_user.email %>
+      <strong>Email address:</strong> <%= @current_user.email %> <br>
+      <strong>Username:</strong> <%= @current_user.username %> <br>
+      <strong>Your description:</strong> <%= @current_user.description %>
     </p>
 </div>
 
