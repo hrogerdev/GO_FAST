@@ -19,7 +19,7 @@ class MulesController < ApplicationController
     end
   end
 
-  private 
+  private
 
   def mule_params
     params.require(:mule).permit(:transportation_means, :rate_per_km_per_kg)
