@@ -1,6 +1,8 @@
 class ProfilesController < ApplicationController
 
     def show
+        @offers = current_user.offers
+
         @current_user = current_user
         if current_user.mules
             @mules = current_user.mules

@@ -8,7 +8,7 @@
 
 <% if @mules %>
     <% @mules.each do %>
-    <% end %> #à remplir plu stard pour qu'un profile puisse lister toutes ses mules
+    <% end %>
 <% end %>
 
 <div class="container mt-5">
@@ -18,16 +18,36 @@
             <%= f.input :transportation_means %>
         </div>
         <div class="col-4">
-            <%= f.input :location  %>      
+            <%= f.input :location  %>
         </div>
          <div class="col-2">
-            <%= f.input :rate_per_km_per_kg, :label => "Price/Km/Kg" %>      
+            <%= f.input :rate_per_km_per_kg, :label => "Price/Km/Kg" %>
         </div>
-        
+
         <div class="col-2">
-            <%= f.button :submit, class: "btn-login", style: "width:100%; margin-top:1.8rem;"%>     
+            <%= f.button :submit, class: "btn-login", style: "width:100%; margin-top:1.8rem;"%>
         </div>
         <% end %>
-  
+
     </div>
+</div>
+
+
+<div class="container mt-5">
+    <% if @offers %>
+        <% @offers.each do |offer|%>
+        <div class="card mt-2">
+            <div class="card-body row">
+                <h1 class="offer-info col-6">
+                  <%= offer.starting_point.upcase %>  -   <%= offer.destination.upcase %>
+                </h1>
+            <div>
+              Price: <%= offer.commission %>  $, <br>
+              Distance: <%= offer.distance %> km</div>
+            <div class="offer-status <%=offer.status%>"><%= offer.status %></div>
+            </div>
+            <%= link_to "+info", offer_path(offer), class: "text-right mr-2" %>
+        </div>
+        <% end %>
+    <% end %>
 </div>
