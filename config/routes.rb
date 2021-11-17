@@ -3,19 +3,16 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
 
-  resources :mules, except: [ :destroy, :edit, :update ] do
-    resources :offers, only: [ :create ]
-
+  resources :mules, except: %i[destroy edit update] do
+    resources :offers, only: [:create]
   end
 
-  resources :offers, only: [] do
+  resources :offers, only: [:show] do
     member do
       patch :accepted
       patch :refused
     end
   end
 
-  resource :profile, only: [ :show ]
-
-
+  resource :profile, only: [:show]
 end

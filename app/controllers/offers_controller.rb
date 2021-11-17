@@ -1,4 +1,8 @@
 class OffersController < ApplicationController
+  def show
+    @offer = Offer.find(params[:id])
+  end
+
   def new
     @mule = Mule.find(params[:mule_id])
     @offer = Offer.new(offer_params)

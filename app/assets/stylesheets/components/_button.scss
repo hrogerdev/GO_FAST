@@ -25,3 +25,22 @@
   color: #D77A61;
   text-decoration: none;
 }
+
+
+.back-btn {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 2rem;
+}
+
+.btn-ghost {
+  color: #4A4A4A;
+  border: 1px solid #4A4A4A;
+  padding: 8px 24px;
+  border-radius: 50px;
+  font-weight: lighter;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+  margin-right: 2rem;
+}
