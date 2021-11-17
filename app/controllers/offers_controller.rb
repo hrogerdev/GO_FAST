@@ -31,6 +31,15 @@ class OffersController < ApplicationController
 
     redirect_to profile_path
     flash[:alert] = "Offer has been rejected."
+
+  def accepted
+    @offer = Offer.find(params[:id])
+    @offer.status = "accepted"
+    @offer.save
+
+    redirect_to profile_path
+    flash[:alert] = "Congrats! You accepted the offer"
+
   end
 
   private

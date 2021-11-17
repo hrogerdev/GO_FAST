@@ -13,13 +13,13 @@
 
   <body>
     <div class="navbar-lewagon">
-      <img class="navbar-brand" src="#">
+      <img class="navbar-brand" src="https://res.cloudinary.com/ddk5g0o9g/image/upload/v1637078562/kisspng-donkey-clip-art-glass-rabbit-logo-5ba2dd3dd3e5b3.5328907015374001258679_fucpgk.png">
       <% if current_user %>
         <%= link_to "Log out", destroy_user_session_path, :method => :delete, :confirm => "You sure?" %>
         <%= link_to profile_path do %>
           <img class="avatar" src="<%= current_user.photo %>">
             <%# <%= image_tag "image.jpg", class: "avatar" %>
-        <% end %> 
+        <% end %>
       <% else %>
         <%= link_to "Login", new_user_session_path %>
       <% end %>
