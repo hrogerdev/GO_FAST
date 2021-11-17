@@ -32,16 +32,22 @@
     </div>
 </div>
 
-<% if @offers %>
-    <% @offers.each do |offer|%>
-    <div class="offer-card">
-      <div class="offer-trip">
-        <%= offer.starting_point %>
-        <%= offer.destination %>
-        <%= offer.distance %>
-      </div>
-      <p class="offer-commision"><%= offer.commision %> $<p>
-      <div class="offer-status"><%= offer.status %></div>
-    </div>
+
+<div class="container mt-5">
+    <% if @offers %>
+        <% @offers.each do |offer|%>
+        <div class="card mt-2">
+            <div class="card-body row">
+                <h1 class="offer-info col-6">
+                  <%= offer.starting_point.upcase %>  -   <%= offer.destination.upcase %>
+                </h1>
+            <div>
+              Price: <%= offer.commission %>  $, <br>
+              Distance: <%= offer.distance %> km</div>
+            <div class="offer-status <%=offer.status%>"><%= offer.status %></div>
+            </div>
+            <%= link_to "+info", offer_path(offer), class: "text-right mr-2" %>
+        </div>
+        <% end %>
     <% end %>
-<% end %>
+</div>

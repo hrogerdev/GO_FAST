@@ -1,0 +1,22 @@
+.offer-status {
+    padding: 0.5rem 3rem;
+    color: #EFF1F3;
+    border-radius: 5px;
+    position: absolute;
+    right: 3rem;
+    bottom: 1.8rem;
+}
+
+.accepted {
+    background-color: #2DD881;
+}
+
+.refused {
+    background-color: #D1462F;
+}
+
+
+.pending {
+    background-color: #F8DDA4;
+}
+
