@@ -2,11 +2,7 @@ class ProfilesController < ApplicationController
 
     def show
         @offers = current_user.offers
-        mules = current_user.mules
-        mules.each do |mule|
-            @offers << mule.offers
-        end
-
+        @offers << current_user.jobs
         @current_user = current_user
         if current_user.mules
             @mules = current_user.mules
