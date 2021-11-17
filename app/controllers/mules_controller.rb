@@ -5,5 +5,6 @@ class MulesController < ApplicationController
 
   def show
     @mule = Mule.find(params[:id])
+    @offer = Offer.new
   end
 end
