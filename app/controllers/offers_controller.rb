@@ -26,8 +26,10 @@ class OffersController < ApplicationController
 
   def refused
     @offer = Offer.find(params[:id])
-    @offer.status = "refused"
-    @offer.save
+    if @offer.user != current_user
+      @offer.status = "refused"
+      @offer.save
+    end
 
     redirect_to profile_path
     flash[:alert] = "Offer has been rejected."
@@ -35,11 +37,13 @@ class OffersController < ApplicationController
 
   def accepted
     @offer = Offer.find(params[:id])
-    @offer.status = "accepted"
-    @offer.save
-
+    if @offer.user != current_user
+      @offer.status = "accepted"
+      @offer.save
+    end
     redirect_to profile_path
     flash[:alert] = "Congrats! You accepted the offer"
+
   end
 
   private
