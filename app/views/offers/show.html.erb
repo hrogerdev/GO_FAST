@@ -16,7 +16,7 @@
 
     <div class="d-flex justify-content-center m-5">
       <div><%= link_to 'ACCEPT', profile_path, class: "btn-login m-2" %></div>
-      <div><%= link_to 'REJECT', profile_path, class: "btn-ghost m-2" %></div>
+      <div><%= link_to 'REJECT', refused_offer_path, method: :patch, class: "btn-ghost m-2" %></div>
     </div>
 
   </div>
