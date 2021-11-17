@@ -24,6 +24,24 @@ class OffersController < ApplicationController
     end
   end
 
+  def refused
+    @offer = Offer.find(params[:id])
+    @offer.status = "refused"
+    @offer.save
+
+    redirect_to profile_path
+    flash[:alert] = "Offer has been rejected."
+  end
+  def accepted
+    @offer = Offer.find(params[:id])
+    @offer.status = "accepted"
+    @offer.save
+
+    redirect_to profile_path
+    flash[:alert] = "Congrats! You accepted the offer"
+
+  end
+
   private
 
   def offer_params
