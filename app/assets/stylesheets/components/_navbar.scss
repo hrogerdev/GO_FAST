@@ -14,7 +14,17 @@
   top: 0; /* Position the navbar at the top of the page */
   width: 100%; /* Full width */
 
-  a {
+  .other {
+    color: #EFF1F3;
+    text-decoration: none;
+    position: absolute;
+    top: 1rem;
+    right: 10rem;
+    // font-weight: bold;
+    font-size: 1.2rem;
+  }
+
+  .login {
     color: #EFF1F3;
     text-decoration: none;
     position: absolute;
@@ -50,6 +60,10 @@
 
 .navbar-lewagon .avatar{
   position: absolute;
-  top: -0.2rem;
+  top: 0.8rem;
   right: 6rem;
+}
+
+.links {
+  box-sizing: content-box;
 }
