@@ -1,36 +1,68 @@
 <div class="p-3 m-5">
   <div class="mule-info-card m-5 p-5" >
 
-    <div class="d-flex justify-content-between align-items-center">
-      <h2>New offer from: <%= @offer.user.username %></h2>
-      <p><strong><%= @offer.commission %> € </strong> </p>
-    </div>
+    <% if @offer.user != current_user %>
 
-    <div class="m-4" >
-      <p><strong>Destination:</strong> <%= @offer.destination %></p>
-      <p><strong>Departing from:</strong> <%= @offer.starting_point %></p>
-      <p><strong>Distance:</strong> <%= @offer.distance %> Km.</p>
-      <p><strong>Drug type:</strong> <%= @offer.drug_type %></p>
-      <p><strong>Weight:</strong> <%= @offer.weight %> Kg.</p>
-    </div>
+      <div class="d-flex justify-content-between align-items-center">
+        <h2>New offer from: <%= @offer.user.username %></h2>
+        <p><strong><%= @offer.commission %> € </strong> </p>
+      </div>
 
-    <div class="d-flex justify-content-center m-5">
-      <% if @offer.status == "pending" %>
+      <div class="m-4" >
+        <p><strong>Destination:</strong> <%= @offer.destination %></p>
+        <p><strong>Departing from:</strong> <%= @offer.starting_point %></p>
+        <p><strong>Distance:</strong> <%= @offer.distance %> Km.</p>
+        <p><strong>Drug type:</strong> <%= @offer.drug_type %></p>
+        <p><strong>Weight:</strong> <%= @offer.weight %> Kg.</p>
+      </div>
 
-        <div><%= link_to 'ACCEPT', accepted_offer_path, method: :patch, class: "btn-login m-2" %></div>
-        <div><%= link_to 'REJECT', refused_offer_path, method: :patch, class: "btn-ghost m-2" %></div>
+      <div class="d-flex justify-content-center m-5">
+        <% if @offer.status == "pending"  %>
 
-      <% elsif @offer.status == "accepted" %>
+          <div><%= link_to 'ACCEPT', accepted_offer_path, method: :patch, class: "btn-login m-2" %></div>
+          <div><%= link_to 'REJECT', refused_offer_path, method: :patch, class: "btn-ghost m-2" %></div>
 
-        <div class="btn btn-success disabled">ACCEPTED</div>
+        <% elsif @offer.status == "accepted" %>
 
-      <% else %>
+          <div class="btn btn-success disabled">ACCEPTED</div>
 
-        <div class="btn btn-danger disabled">REFUSED</div>
+        <% elsif @offer.status == "rejected" %>
 
-      <% end %>
-    </div>
+          <div class="btn btn-danger disabled">REFUSED</div>
+
+        <% end %>
+      </div>
+
+    <% else %>
+
+      <div class="d-flex justify-content-between align-items-center">
+        <h2>Offer status:</h2>
+        <% if @offer.status == "pending"  %>
+
+          <div class="btn btn-warning disabled">PENDING</div>
+
+        <% elsif @offer.status == "accepted" %>
+
+          <div class="btn btn-success disabled">ACCEPTED</div>
+
+        <% elsif @offer.status == "rejected" %>
+
+          <div class="btn btn-danger disabled">REFUSED</div>
+
+        <% end %>
+      </div>
+
+      <div class="m-4 pt-5" >
+        <p><strong><%= @offer.commission %> € </strong> </p>
+        <p><strong>Destination:</strong> <%= @offer.destination %></p>
+        <p><strong>Departing from:</strong> <%= @offer.starting_point %></p>
+        <p><strong>Distance:</strong> <%= @offer.distance %> Km.</p>
+        <p><strong>Drug type:</strong> <%= @offer.drug_type %></p>
+        <p><strong>Weight:</strong> <%= @offer.weight %> Kg.</p>
+      </div>
+    <% end %>
   </div>
+
 
   <div class="back-btn"><%= link_to 'Back', profile_path, class: "btn-login mr-5" %></div>
 </div>
