@@ -1,4 +1,4 @@
-<%# <%
+<%
   if @mule.user.photo.attached?
     url = cl_image_path @mule.user.photo.key, height: 300, crop: :fill
   else
@@ -9,7 +9,7 @@
 <div class="container d-flex justify-content-between align-items-center mt-5 pt-5 ml-5">
   <div class="mule-info-card m-5 col-12 col-lg-8" >
     <div class="mule-profile-infos">
-      <img src='https://cdnmundo1.img.sputniknews.com/img/108565/78/1085657854_0:555:1500:1367_1000x541_80_0_0_ab86277e9d4cb8f1a28c69f7cd8438f4.jpg' class="card-mule-user avatar-bordered" />
+      <img src='<%= url %>' class="card-mule-user avatar-bordered" />
       <div class="mule-details">
         <h2><%= @mule.user.username %></h2>
         <p><strong>Commission:</strong> <%= @mule.rate_per_km_per_kg %> €</p>
