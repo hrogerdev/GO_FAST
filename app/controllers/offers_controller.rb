@@ -32,6 +32,7 @@ class OffersController < ApplicationController
     redirect_to profile_path
     flash[:alert] = "Offer has been rejected."
   end
+
   def accepted
     @offer = Offer.find(params[:id])
     @offer.status = "accepted"
@@ -39,7 +40,6 @@ class OffersController < ApplicationController
 
     redirect_to profile_path
     flash[:alert] = "Congrats! You accepted the offer"
-
   end
 
   private

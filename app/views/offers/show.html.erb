@@ -14,26 +14,22 @@
       <p><strong>Weight:</strong> <%= @offer.weight %> Kg.</p>
     </div>
 
-    <% if @offer.status == "pending" %>
     <div class="d-flex justify-content-center m-5">
+      <% if @offer.status == "pending" %>
 
-      <div><%= link_to 'ACCEPT', profile_path, class: "btn-login m-2" %></div>
-      <div><%= link_to 'REJECT', refused_offer_path, method: :patch, class: "btn-ghost m-2" %></div>
+        <div><%= link_to 'ACCEPT', accepted_offer_path, method: :patch, class: "btn-login m-2" %></div>
+        <div><%= link_to 'REJECT', refused_offer_path, method: :patch, class: "btn-ghost m-2" %></div>
 
-      <div><%= link_to 'ACCEPT', accepted_offer_path, method: :patch, class: "btn-login m-2" %></div>
-      <div><%= link_to 'REJECT', profile_path, class: "btn-ghost m-2" %></div>
+      <% elsif @offer.status == "accepted" %>
 
+        <div class="btn btn-success disabled">ACCEPTED</div>
+
+      <% else %>
+
+        <div class="btn btn-danger disabled">REFUSED</div>
+
+      <% end %>
     </div>
-    <% elsif @offer.status == "accepted" %>
-    <div class="d-flex justify-content-center m-5">
-      <div class="offer-status accepted">ACCEPTED</div>
-    </div>
-    <% else %>
-    <div class="d-flex justify-content-center m-5">
-      <div class="offer-status refused">REFUSED</div>
-    </div>
-    <% end %>
-
   </div>
 
   <div class="back-btn"><%= link_to 'Back', profile_path, class: "btn-login mr-5" %></div>
