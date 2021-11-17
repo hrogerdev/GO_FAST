@@ -37,6 +37,7 @@
 <div class="container mt-5">
     <% if @offers %>
         <% @offers.each do |offer|%>
+        <%= link_to offer_path(offer) do %>
         <div class="card mt-2">
             <div class="card-body row">
                 <h1 class="offer-info col-6">
@@ -47,8 +48,8 @@
               Distance: <%= offer.distance %> km</div>
             <div class="offer-status <%=offer.status%>"><%= offer.status %></div>
             </div>
-            <%= link_to "+info", offer_path(offer), class: "text-right mr-2" %>
-        </div>
+          </div>
+          <% end %>
         <% end %>
     <% end %>
 </div>
