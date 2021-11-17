@@ -12,7 +12,7 @@ class MulesController < ApplicationController
     @mule = Mule.new(mule_params)
     @mule.user = current_user
     # @mule.description = current_user.description
-    if @mule.save!
+    if @mule.save
       redirect_to mule_path(@mule)
     else
       render "profiles/show"
