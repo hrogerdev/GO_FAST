@@ -14,10 +14,20 @@
       <p><strong>Weight:</strong> <%= @offer.weight %> Kg.</p>
     </div>
 
+    <% if @offer.status == "pending" %>
     <div class="d-flex justify-content-center m-5">
       <div><%= link_to 'ACCEPT', profile_path, class: "btn-login m-2" %></div>
       <div><%= link_to 'REJECT', profile_path, class: "btn-ghost m-2" %></div>
     </div>
+    <% elsif @offer.status == "accepted" %>
+    <div class="d-flex justify-content-center m-5">
+      <div class="offer-status accepted">ACCEPTED</div>
+    </div>
+    <% else %>
+    <div class="d-flex justify-content-center m-5">
+      <div class="offer-status refused">REFUSED</div>
+    </div>
+    <% end %>
 
   </div>
 
