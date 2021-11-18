@@ -1,5 +1,15 @@
+<%
+  if @current_user.photo.attached?
+    url = cl_image_path @current_user.photo.key, height: 300, crop: :fill
+  else
+    url = 'https://cdnmundo1.img.sputniknews.com/img/108565/78/1085657854_0:555:1500:1367_1000x541_80_0_0_ab86277e9d4cb8f1a28c69f7cd8438f4.jpg'
+  end
+%>
+
+
+
 <div class="profile-container">
-    <img class="avatar-large" src="<%= cl_image_path current_user.photo.key, height: 300, crop: :fill if current_user.photo.attached? %>">
+    <img class="avatar-large" src="<%= url %>">
     <p class="profile-info">
       <strong>Email address:</strong> <%= @current_user.email %> <br>
       <strong>Username:</strong> <%= @current_user.username %> <br>
@@ -13,32 +23,42 @@
 <% end %>
 
 <div class="container mt-5">
-        <%= simple_form_for @mule do |f| %>
-      <div class="row">
-         <div class="col-4">
-            <%= f.input :transportation_means %>
-        </div>
+  <%= simple_form_for @mule do |f| %>
+    <div class="row">
         <div class="col-4">
-            <%= f.input :location  %>
-        </div>
-         <div class="col-2">
-            <%= f.input :rate_per_km_per_kg, :label => "Price/Km/Kg" %>
-        </div>
-
+          <%= f.input :transportation_means %>
+      </div>
+      <div class="col-4">
+          <%= f.input :location  %>
+      </div>
         <div class="col-2">
-            <%= f.button :submit, class: "btn-login", style: "width:100%; margin-top:1.8rem;"%>
-        </div>
-        <% end %>
+          <%= f.input :rate_per_km_per_kg, :label => "Price/Km/Kg" %>
+      </div>
+
+      <div class="col-2">
+          <%= f.button :submit, class: "btn-login", style: "width:100%; margin-top:1.8rem;"%>
+      </div>
 
     </div>
+  <% end %>
 </div>
 
+<div class="content">
+  <!-- Nav pills -->
+  <ul class="nav nav-pills" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="pill" href="#login">Offers sent</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="pill" href="#regis">jobs</a>
+    </li>
+  </ul>
 
-<div class="container mt-5">
-    <% if @offers %>
+ <div class="tab-content">
+    <div id="login" class=" tab-pane active">
+      <% if @offers %>
         <% @offers.each do |offer|%>
-        <%= link_to offer_path(offer) do %>
-        <div class="card mt-2">
+          <div class="card mt-2">
             <div class="card-body row">
                 <h1 class="offer-info col-6">
                   <%= offer.starting_point.upcase %>  -   <%= offer.destination.upcase %>
@@ -47,9 +67,36 @@
               Price: <%= offer.commission %>  $, <br>
               Distance: <%= offer.distance %> km</div>
             <div class="offer-status <%=offer.status%>"><%= offer.status %></div>
+
+
             </div>
           </div>
-          <% end %>
         <% end %>
-    <% end %>
+      <% end %>
+    </div>
+
+    <div id="regis" class="tab-pane fade">
+      <% @jobs.each do |job|%>
+        <div class="card mt-2">
+          <div class="card-body row">
+              <% if job.status == "pending" &&  current_user.mules.include?(job.mule) %>
+                <div class="d-flex justify-content-around">
+                  <%= link_to '👍', accepted_offer_path(job), method: :patch, class: 'm-1' %>
+                  <%= link_to '🗑️', refused_offer_path(job), method: :patch, class: 'm-1' %>
+                </div>
+
+              <% end %>
+              <h1 class="job-info col-6">
+                <%= job.starting_point.upcase %>  -   <%= job.destination.upcase %>
+              </h1>
+          <div>
+            Price: <%= job.commission %>  $, <br>
+            Distance: <%= job.distance %> km
+          </div>
+          <div class="offer-status <%=job.status%>"><%= job.status %></div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>

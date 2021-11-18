@@ -1,6 +1,16 @@
 class MulesController < ApplicationController
   def index
-    @mules = Mule.all
+    if params[:query].present?
+      @mules = PgSearch.multisearch(params[:query]).flat_map do |result|
+        if result.searchable.is_a? User
+          result.searchable.mules
+        else
+          result.searchable
+        end
+      end
+    else
+      @mules = Mule.all
+    end
   end
 
   def show
