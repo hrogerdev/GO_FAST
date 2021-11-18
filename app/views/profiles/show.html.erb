@@ -13,39 +13,43 @@
 <% end %>
 
 <div class="container mt-5">
-        <%= simple_form_for @mule do |f| %>
-      <div class="row">
-         <div class="col-4">
-            <%= f.input :transportation_means %>
-        </div>
+  <%= simple_form_for @mule do |f| %>
+    <div class="row">
         <div class="col-4">
-            <%= f.input :location  %>
-        </div>
-         <div class="col-2">
-            <%= f.input :rate_per_km_per_kg, :label => "Price/Km/Kg" %>
-        </div>
-
+          <%= f.input :transportation_means %>
+      </div>
+      <div class="col-4">
+          <%= f.input :location  %>
+      </div>
         <div class="col-2">
-            <%= f.button :submit, class: "btn-login", style: "width:100%; margin-top:1.8rem;"%>
-        </div>
-        <% end %>
+          <%= f.input :rate_per_km_per_kg, :label => "Price/Km/Kg" %>
+      </div>
+
+      <div class="col-2">
+          <%= f.button :submit, class: "btn-login", style: "width:100%; margin-top:1.8rem;"%>
+      </div>
 
     </div>
+  <% end %>
 </div>
 
+<div class="content">
+  <!-- Nav pills -->
+  <ul class="nav nav-pills" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="pill" href="#login">Offers sent</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="pill" href="#regis">jobs</a>
+    </li>
+  </ul>
 
-<div class="container mt-5">
-    <% if @offers %>
+ <div class="tab-content">
+    <div id="login" class=" tab-pane active">
+      <% if @offers %>
         <% @offers.each do |offer|%>
           <div class="card mt-2">
             <div class="card-body row">
-              <% if offer.status == "pending" &&  current_user.mules.include?(offer.mule) %>
-              <div class="d-flex justify-content-around">
-                <%= link_to '👍', accepted_offer_path(offer), method: :patch, class: 'm-1' %>
-                <%= link_to '🗑️', refused_offer_path(offer), method: :patch, class: 'm-1' %>
-              </div>
-
-              <% end %>
                 <h1 class="offer-info col-6">
                   <%= offer.starting_point.upcase %>  -   <%= offer.destination.upcase %>
                 </h1>
@@ -58,32 +62,31 @@
             </div>
           </div>
         <% end %>
-      </div>
-    <%# </div> %>
-<%# 
-    <div class="tab-content"> %>
-      <div id="regis" class=" tab-pane fade">
-                        <% @jobs.each do |job|%>
-        <%= link_to offer_path(job) do %>
-        <div class="card mt-2">
-            <div class="card-body row">
-                <h1 class="job-info col-6">
-                  <%= job.starting_point.upcase %>  -   <%= job.destination.upcase %>
-                </h1>
-            <div>
-              Price: <%= job.commission %>  $, <br>
-              Distance: <%= job.distance %> km</div>
-            <div class="offer-status <%=job.status%>"><%= job.status %></div>
-
-
-            </div>
-          </div>
-          <% end %>
-        <% end %>
-      </div>
+      <% end %>
     </div>
+
+    <div id="regis" class="tab-pane fade">
+      <% @jobs.each do |job|%>
+        <div class="card mt-2">
+          <div class="card-body row">
+              <% if job.status == "pending" &&  current_user.mules.include?(job.mule) %>
+                <div class="d-flex justify-content-around">
+                  <%= link_to '👍', accepted_offer_path(job), method: :patch, class: 'm-1' %>
+                  <%= link_to '🗑️', refused_offer_path(job), method: :patch, class: 'm-1' %>
+                </div>
+
+              <% end %>
+              <h1 class="job-info col-6">
+                <%= job.starting_point.upcase %>  -   <%= job.destination.upcase %>
+              </h1>
+          <div>
+            Price: <%= job.commission %>  $, <br>
+            Distance: <%= job.distance %> km
+          </div>
+          <div class="offer-status <%=job.status%>"><%= job.status %></div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
-
-
-        
-    
