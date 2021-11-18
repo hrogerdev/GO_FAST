@@ -34,9 +34,21 @@
 </div>
 
 
-<div class="container mt-5">
-    <% if @offers %>
-        <% @offers.each do |offer|%>
+
+ <div class="content">
+    <!-- Nav pills -->
+    <ul class="nav nav-pills" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" data-toggle="pill" href="#login">Offers sent</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="pill" href="#regis">jobs</a>
+      </li>
+    </ul>
+
+    <div class="tab-content">
+      <div id="login" class=" tab-pane active">
+                <% @offers.each do |offer|%>
         <%= link_to offer_path(offer) do %>
         <div class="card mt-2">
             <div class="card-body row">
@@ -47,9 +59,38 @@
               Price: <%= offer.commission %>  $, <br>
               Distance: <%= offer.distance %> km</div>
             <div class="offer-status <%=offer.status%>"><%= offer.status %></div>
+
+
             </div>
           </div>
           <% end %>
         <% end %>
-    <% end %>
+      </div>
+    <%# </div> %>
+<%# 
+    <div class="tab-content"> %>
+      <div id="regis" class=" tab-pane fade">
+                        <% @jobs.each do |job|%>
+        <%= link_to offer_path(job) do %>
+        <div class="card mt-2">
+            <div class="card-body row">
+                <h1 class="job-info col-6">
+                  <%= job.starting_point.upcase %>  -   <%= job.destination.upcase %>
+                </h1>
+            <div>
+              Price: <%= job.commission %>  $, <br>
+              Distance: <%= job.distance %> km</div>
+            <div class="offer-status <%=job.status%>"><%= job.status %></div>
+
+
+            </div>
+          </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
 </div>
+
+
+        
+    
