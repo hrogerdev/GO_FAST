@@ -37,7 +37,7 @@
 <div class="container mt-5">
     <% if @offers %>
         <% @offers.each do |offer|%>
-        <div class="card mt-2">
+          <div class="card mt-2">
             <div class="card-body row">
               <% if offer.status == "pending" &&  current_user.mules.include?(offer.mule) %>
               <div class="d-flex justify-content-around">
@@ -53,8 +53,37 @@
               Price: <%= offer.commission %>  $, <br>
               Distance: <%= offer.distance %> km</div>
             <div class="offer-status <%=offer.status%>"><%= offer.status %></div>
+
+
             </div>
           </div>
         <% end %>
-    <% end %>
+      </div>
+    <%# </div> %>
+<%# 
+    <div class="tab-content"> %>
+      <div id="regis" class=" tab-pane fade">
+                        <% @jobs.each do |job|%>
+        <%= link_to offer_path(job) do %>
+        <div class="card mt-2">
+            <div class="card-body row">
+                <h1 class="job-info col-6">
+                  <%= job.starting_point.upcase %>  -   <%= job.destination.upcase %>
+                </h1>
+            <div>
+              Price: <%= job.commission %>  $, <br>
+              Distance: <%= job.distance %> km</div>
+            <div class="offer-status <%=job.status%>"><%= job.status %></div>
+
+
+            </div>
+          </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
 </div>
+
+
+        
+    
