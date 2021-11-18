@@ -1,6 +1,13 @@
 class MulesController < ApplicationController
   def index
     @mules = Mule.all
+    @markers = @mules.geocoded.map do |mule|
+      {
+        lat: mule.latitude,
+        lng: mule.longitude,
+        image_url: helpers.asset_url('mule_marker.png')
+      }
+    end
   end
 
   def show
