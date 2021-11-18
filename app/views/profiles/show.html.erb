@@ -1,4 +1,4 @@
-<%
+<% 
   if @current_user.photo.attached?
     url = cl_image_path @current_user.photo.key, height: 300, crop: :fill
   else
@@ -11,9 +11,8 @@
 <div class="profile-container">
     <img class="avatar-large" src="<%= url %>">
     <p class="profile-info">
-      <strong>Email address:</strong> <%= @current_user.email %> <br>
-      <strong>Username:</strong> <%= @current_user.username %> <br>
-      <strong>Your description:</strong> <%= @current_user.description %>
+    A wise man once said <br><br>
+    <i style="text-align:center;"><%= Faker::Quote.jack_handey   %></i>      
     </p>
 </div>
 
@@ -63,9 +62,14 @@
                 <h1 class="offer-info col-6">
                   <%= offer.starting_point.upcase %>  -   <%= offer.destination.upcase %>
                 </h1>
-            <div>
-              Price: <%= offer.commission %>  $, <br>
-              Distance: <%= offer.distance %> km</div>
+            <div class="left-icons">
+              <%= offer.commission %>$ <i class="fas fa-tag" style=""></i><br>
+             <%= offer.distance %>km <i class="fas fa-map-marked-alt"></i><br>
+             </div>
+            <div style="padding: 0 1rem;">
+            <i class="fas fa-box"></i> <%= offer.weight %>kg <br>
+            <i class="fas fa-user-secret"></i> <%= offer.drug_type %> <br>
+            </div>
             <div class="offer-status <%=offer.status%>"><%= offer.status %></div>
 
 
