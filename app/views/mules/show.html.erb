@@ -22,15 +22,13 @@
   </div>
   <% unless current_user.mules.include?(@mule) %>
     <div class="mule-info-card m-5 col-lg-4">
-      <h2 class="py-3">Make an offer:</h2>
+      <h2 class="py-3">Offer a job :</h2>
         <%= simple_form_for([@mule, @offer]) do |f|%>
-          <%= f.input :destination %>
-          <%= f.input :starting_point %>
-          <%= f.input :distance %>
-          <%= f.input :drug_type %>
-          <%= f.input :weight %>
-
-          <div class="d-flex justify-content-center mt-2">  <%= f.submit %></div>
+          <div class="d-flex fas fa-cannabis"> <%= f.input :drug_type, label: false,  placeholder: 'drug type', label_HTML: {class:"fas fa-cannabis"} %> </div>
+          <div class="d-inline-flex fas fa-weight-hanging"> <%= f.input :weight, label: false,  placeholder: 'weight', label_HTML: {class:"fas fa-weight-hanging"} %> </div>
+          <div class="d-flex fas fa-sign-out-alt"> <%= f.input :starting_point, label: false,  placeholder: 'starting point', label_HTML: {class:"fas fa-sign-out-alt"} %></div>
+          <div class="d-flex fas fa-flag-checkered"> <%= f.input :destination, label: false,  placeholder: 'destination', label_HTML: {class:"fas fa-flag-checkered"} %></div>
+          <div class="d-flex justify-content-center mt-2 btn btn-success">  <%= f.button :submit, 'Offer <COMMISSION>'%></div>
         <% end %>
     </div>
   </div>
