@@ -37,9 +37,15 @@
 <div class="container mt-5">
     <% if @offers %>
         <% @offers.each do |offer|%>
-        <%= link_to offer_path(offer) do %>
         <div class="card mt-2">
             <div class="card-body row">
+              <% if offer.status == "pending" &&  current_user.mules.include?(offer.mule) %>
+              <div class="d-flex justify-content-around">
+                <%= link_to '👍', accepted_offer_path(offer), method: :patch, class: 'm-1' %>
+                <%= link_to '🗑️', refused_offer_path(offer), method: :patch, class: 'm-1' %>
+              </div>
+
+              <% end %>
                 <h1 class="offer-info col-6">
                   <%= offer.starting_point.upcase %>  -   <%= offer.destination.upcase %>
                 </h1>
@@ -49,7 +55,6 @@
             <div class="offer-status <%=offer.status%>"><%= offer.status %></div>
             </div>
           </div>
-          <% end %>
         <% end %>
     <% end %>
 </div>
