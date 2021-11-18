@@ -7,6 +7,8 @@ class CreatePgSearchDocuments < ActiveRecord::Migration[6.0]
         t.timestamps null: false
       end
     end
+    PgSearch::Multisearch.rebuild(User)
+    PgSearch::Multisearch.rebuild(Mule)
   end
 
   def down
