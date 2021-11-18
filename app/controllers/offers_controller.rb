@@ -1,6 +1,7 @@
 class OffersController < ApplicationController
   def show
     @offer = Offer.find(params[:id])
+
   end
 
   def new
@@ -16,7 +17,7 @@ class OffersController < ApplicationController
     @offer.commission = (@offer.weight + @offer.distance) * @mule.rate_per_km_per_kg
     @offer.user = current_user
 
-    if @offer.save!
+    if @offer.save
       redirect_to(mules_path)
       flash[:alert] = "Your offer has been sent"
     else
