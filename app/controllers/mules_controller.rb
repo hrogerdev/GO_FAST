@@ -5,6 +5,10 @@ class MulesController < ApplicationController
       {
         lat: mule.latitude,
         lng: mule.longitude,
+        info_window: render_to_string(
+          partial: "info_window",
+          locals: { mule: mule }
+        ),
         image_url: helpers.asset_url('mule_marker.png')
       }
     end
