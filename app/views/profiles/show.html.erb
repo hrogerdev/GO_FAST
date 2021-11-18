@@ -1,5 +1,15 @@
+<%
+  if @current_user.photo.attached?
+    url = cl_image_path @current_user.photo.key, height: 300, crop: :fill
+  else
+    url = 'https://cdnmundo1.img.sputniknews.com/img/108565/78/1085657854_0:555:1500:1367_1000x541_80_0_0_ab86277e9d4cb8f1a28c69f7cd8438f4.jpg'
+  end
+%>
+
+
+
 <div class="profile-container">
-    <img class="avatar-large" src="<%= cl_image_path current_user.photo.key, height: 300, crop: :fill if current_user.photo.attached? %>">
+    <img class="avatar-large" src="<%= url %>">
     <p class="profile-info">
       <strong>Email address:</strong> <%= @current_user.email %> <br>
       <strong>Username:</strong> <%= @current_user.username %> <br>
