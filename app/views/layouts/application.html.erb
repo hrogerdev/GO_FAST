@@ -13,7 +13,14 @@
 
   <body>
     <div class="navbar-lewagon">
-      <img class="navbar-brand" src="https://res.cloudinary.com/ddk5g0o9g/image/upload/v1637078562/kisspng-donkey-clip-art-glass-rabbit-logo-5ba2dd3dd3e5b3.5328907015374001258679_fucpgk.png">
+
+      <%# <img class="navbar-brand" src="https://res.cloudinary.com/ddk5g0o9g/image/upload/v1637078562/kisspng-donkey-clip-art-glass-rabbit-logo-5ba2dd3dd3e5b3.5328907015374001258679_fucpgk.png"> %>
+      <%= link_to root_path do %>
+      <%= image_tag("https://res.cloudinary.com/ddk5g0o9g/image/upload/v1637078562/kisspng-donkey-clip-art-glass-rabbit-logo-5ba2dd3dd3e5b3.5328907015374001258679_fucpgk.png", class: "navbar-brand") %>
+      <% end %>
+
+
+
       <% if current_user %>
         <%= link_to "Mules", mules_path, class: "other" %>
 
