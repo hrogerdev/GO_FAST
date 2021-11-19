@@ -11,16 +11,20 @@
     text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
     font-size: 32px;
     font-weight: bold;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
   }
 
   .banner-login p {
-    font-size: 1rem;
+    font-size: 30px;
+    line-height: 31px;
     color: white;
-    margin-bottom: 0.5rem;
+    margin-bottom: 30px;
     opacity: .7;
     text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   }
 
   #gofast {
-    color:#D77A61
+    // color:#D77A61
+    color: #F02D3A
   }
