@@ -22,14 +22,16 @@
   </div>
   <% unless current_user.mules.include?(@mule) %>
     <div class="mule-info-card m-5 col-lg-4">
-      <h2 class="py-3">Make an offer:</h2>
+      <h2 class="py-3">Offer a job :</h2>
         <%= simple_form_for([@mule, @offer]) do |f|%>
+
           <%= f.input :destination %>
           <%= f.input :starting_point %>
           <%= f.input :drug_type %>
           <%= f.input :weight %>
 
           <div class="d-flex justify-content-center mt-2">  <%= f.submit %></div>
+
         <% end %>
     </div>
   </div>
