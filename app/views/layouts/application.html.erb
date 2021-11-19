@@ -7,8 +7,8 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application' %>
 
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
   <body>
@@ -29,12 +29,11 @@
           <img class="avatar" src="<%= cl_image_path current_user.photo.key if current_user.photo.attached? %>">
             <%# <%= image_tag "image.jpg", class: "avatar" %>
         <% end %>
-      <% else %>
-        <%= link_to "Login", new_user_session_path, class: "login" %>
       <% end %>
   </div>
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
     <%= yield %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </body>
 </html>
