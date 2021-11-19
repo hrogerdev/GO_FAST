@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :offers, only: [:create]
   end
 
-  resources :offers, only: [:show] do
+  resources :offers, only: [] do
     member do
       patch :accepted
       patch :refused

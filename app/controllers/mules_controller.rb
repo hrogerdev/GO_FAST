@@ -1,7 +1,17 @@
 class MulesController < ApplicationController
   def index
-    @mules = Mule.all
-    @markers = @mules.geocoded.map do |mule|
+    
+    if params[:query].present?
+      @mules = PgSearch.multisearch(params[:query]).flat_map do |result|
+        if result.searchable.is_a? User
+          result.searchable.mules
+        else
+          result.searchable
+        end
+      end
+    else
+      @mules = Mule.all
+      @markers = @mules.geocoded.map do |mule|
       {
         lat: mule.latitude,
         lng: mule.longitude,
@@ -11,6 +21,7 @@ class MulesController < ApplicationController
         ),
         image_url: helpers.asset_url('mule_marker.png')
       }
+    end
     end
   end
 
@@ -22,7 +33,7 @@ class MulesController < ApplicationController
   def create
     @mule = Mule.new(mule_params)
     @mule.user = current_user
-    # @mule.description = current_user.description
+    @mule.description = current_user.description
     if @mule.save
       redirect_to mule_path(@mule)
     else

@@ -1,6 +1,6 @@
 .mule-info-card {
   overflow: hidden;
-  background: white;
+  background-color: #30292F;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   height: 35rem;
 }
@@ -12,17 +12,22 @@
 }
 
 .mule-info-card h2 {
+  font-family: 'Staatliches', cursive;
   font-size: 3rem;
   font-weight: bold;
   margin: 0;
-  color: #223843;
+  color: #EFF6EE;
+  letter-spacing: 2px;
 }
 
 .mule-info-card p {
+  font-family: 'Passion One', cursive;
+  letter-spacing: 2px;
   font-size: 2rem;
   opacity: .8;
   margin: 0;
-  color: #223843;
+  color: #EFF6EE;
+  font-weight: lighter;
 }
 
 
@@ -40,7 +45,7 @@
 
 .mule-info-card .mule-profile-description {
 
-  background: #d8b4a0a8;
+  background: #6B818C;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   height: 20rem;
 }
