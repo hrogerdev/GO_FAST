@@ -36,6 +36,7 @@ gem 'simple_form'
 #use pg search for the search bar
 gem 'pg_search', '~> 2.3.0'
 
+gem 'geocoder'
 
 group :development, :test do
   gem 'pry-byebug'
