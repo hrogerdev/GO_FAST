@@ -9,6 +9,7 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Passion+One&family=Patua+One&family=Righteous&family=Staatliches&display=swap" rel="stylesheet">
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+    <%= stylesheet_pack_tag 'application' %>
   </head>
 
   <body>
@@ -29,12 +30,11 @@
           <img class="avatar" src="<%= cl_image_path current_user.photo.key if current_user.photo.attached? %>">
             <%# <%= image_tag "image.jpg", class: "avatar" %>
         <% end %>
-      <% else %>
-        <%= link_to "Login", new_user_session_path, class: "login" %>
       <% end %>
   </div>
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
     <%= yield %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </body>
 </html>

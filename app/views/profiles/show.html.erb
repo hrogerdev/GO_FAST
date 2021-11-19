@@ -16,11 +16,6 @@
     </p>
 </div>
 
-<% if @mules %>
-    <% @mules.each do %>
-    <% end %>
-<% end %>
-
 <div class="container mt-5">
   <%= simple_form_for @mule do |f| %>
     <div class="row">
@@ -70,7 +65,15 @@
             <i class="fas fa-box"></i> <%= offer.weight %>kg <br>
             <i class="fas fa-user-secret"></i> <%= offer.drug_type %> <br>
             </div>
-            <div class="offer-status <%=offer.status%>"><%= offer.status %></div>
+            <div class="offer-status <%=offer.status%>"><%= offer.status.upcase %>
+            <% if offer.status == "accepted" %>
+                <i class="far fa-check-circle"></i>
+            <% elsif offer.status == "refused" %>
+                <i class="far fa-times-circle"></i>
+            <% else %>
+                <i class="fas fa-history"></i>
+            <% end %>
+            </div>
 
 
             </div>

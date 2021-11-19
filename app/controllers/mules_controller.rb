@@ -1,5 +1,6 @@
 class MulesController < ApplicationController
   def index
+    
     if params[:query].present?
       @mules = PgSearch.multisearch(params[:query]).flat_map do |result|
         if result.searchable.is_a? User
@@ -10,6 +11,17 @@ class MulesController < ApplicationController
       end
     else
       @mules = Mule.all
+      @markers = @mules.geocoded.map do |mule|
+      {
+        lat: mule.latitude,
+        lng: mule.longitude,
+        info_window: render_to_string(
+          partial: "info_window",
+          locals: { mule: mule }
+        ),
+        image_url: helpers.asset_url('mule_marker.png')
+      }
+    end
     end
   end
 
