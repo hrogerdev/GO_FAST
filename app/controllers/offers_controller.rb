@@ -40,6 +40,14 @@ class OffersController < ApplicationController
     flash[:alert] = "Congrats! You accepted the offer"
   end
 
+  def distance
+    from = Geocoder.coordinates(params[:starting_point])
+    to = Geocoder.coordinates(params[:destination])
+    distance = Geocoder::Calculations.distance_between(from, to).to_i
+
+    render json: { distance: distance }
+  end
+
   private
 
   def offer_params

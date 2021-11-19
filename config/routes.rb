@@ -12,6 +12,10 @@ Rails.application.routes.draw do
       patch :accepted
       patch :refused
     end
+
+    collection do
+      get :distance
+    end
   end
 
   resource :profile, only: [:show]
