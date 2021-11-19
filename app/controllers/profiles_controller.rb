@@ -1,6 +1,7 @@
 class ProfilesController < ApplicationController
 
     def show
+        @mules = current_user.mules
         @offers = current_user.offers
         @jobs = current_user.jobs
         @current_user = current_user
