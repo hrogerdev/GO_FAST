@@ -1,4 +1,4 @@
-<% 
+<%
   if @current_user.photo.attached?
     url = cl_image_path @current_user.photo.key, height: 300, crop: :fill
   else
@@ -12,7 +12,7 @@
     <img class="avatar-large" src="<%= url %>">
     <p class="profile-info">
     A wise man once said <br><br>
-    <i style="text-align:center;">“ <%= Faker::Quote.jack_handey %> ”</i>      
+    <i style="text-align:center;">“ <%= Faker::Quote.jack_handey %> ”</i>
     </p>
 </div>
 
@@ -111,27 +111,29 @@
         <% end %>
         </div>
       <% if @mules %>
-        <div class="grid">
+      <div class="row justify-content-center">
+        <div class="d-flex">
         <% @mules.each do |mule|%>
         <%= link_to mule_path(mule) do %>
-          <div class="card-mule col-4" style="padding:0;">
+          <div class="card-mule m-2">
             <%
             if mule.user.photo.attached?
-                url = cl_image_path mule.user.photo.key, height: 300, crop: :fill
+                url = cl_image_path mule.user.photo.key
             else
                 url = 'https://cdnmundo1.img.sputniknews.com/img/108565/78/1085657854_0:555:1500:1367_1000x541_80_0_0_ab86277e9d4cb8f1a28c69f7cd8438f4.jpg'
             end
             %>
-            <img src= '<%= url %>' />
+            <img src= '<%= url %>', class="card-mule" />
             <div class="card-mule-infos">
                 <h2> <%= mule.user.username %></h2>
-                <p><strong>Location: </strong><%= mule.location %></p>
-                <p> <%= mule.description  %></p>
-                <p>Rate: <strong><%= mule.rate_per_km_per_kg %> €</strong></p>
+                <p><strong>📍 </strong><%= mule.location %></p>
             </div>
+              <div class="card-price"><%= mule.rate_per_km_per_kg %>€</div>
             </div>
             <% end %>
         <% end %>
+    </div>
+
       <% end %>
     </div>
 
