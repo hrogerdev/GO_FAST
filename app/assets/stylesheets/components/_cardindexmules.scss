@@ -1,13 +1,24 @@
 .card-mule {
   overflow: hidden;
-  height: 180px;
-  background: white;
-  box-shadow: 0 0 15px rgba(10,10,50,0.3);
-  display: flex;
-  align-items: center;
-  border-radius: 5px;
-  background-color: #d8b4a0a8;
+  background-color: #30292F;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  height: 280px;
+  position: relative;
 }
+
+.card-price {
+  position: absolute;
+  background-color: #EFF6EE;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 40%;
+  bottom: 63px;
+  right: 14px;
+  font-size: 19px;
+  color: #30292F;
+  font-weight: bold;
+  padding: 4px 6px;
+}
+
 
 .card-mule:hover {
   box-shadow: 0 0 3px rgba(255,255,255,1);
@@ -15,16 +26,18 @@
 }
 
 .card-mule img {
-  height: 100%;
-  width: 120px;
+  height: 200px;
+  width: 100%;
   object-fit: cover;
 }
 
 .card-mule h2 {
-  font-size: 20px;
+  font-size: 16px;
   font-weight: bold;
   margin: 0;
-  color: #223843;
+  font-family: 'Staatliches', cursive;
+  color: #EFF6EE;
+  letter-spacing: 2px;
 }
 
 .card-mule p {
@@ -32,22 +45,27 @@
   line-height: 1.4;
   opacity: .7;
   margin-bottom: 0;
+  color: #F02D3A;
   margin-top: 8px;
-  color: #223843;
+  font-family: 'Passion One', cursive;
+  letter-spacing: 2px;
 }
 
 .card-mule .card-mule-infos {
   padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
 a {
-  color: #223843;
+  color: #EFF6EE;
   text-decoration: none;
   transition: 0,2s;
 }
 
 a:hover {
-  color: #D77A61;
+  color: #F02D3A;
   text-decoration: none;
   transition: 0,2s;
 }

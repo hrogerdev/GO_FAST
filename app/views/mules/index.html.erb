@@ -1,6 +1,6 @@
 
-<h1 class="title-mules-index text-center m-5">Find the best mule for you</h1>
-<div class="d-flex">
+<h1 class="title-mules-index text-center">Find the best mule for you</h1>
+<div class="d-flex  mt-5">
   <div class="container col-sm-8 p-2">
     <%= simple_form_for :search, url: root_path, method: :get do |f| %>
       <div class="search-form-control form-group mx-5 mb-5">
@@ -17,18 +17,17 @@
         <div class="card-mule">
         <%
           if mule.user.photo.attached?
-            url = cl_image_path mule.user.photo.key, height: 300, crop: :fill
+            url = cl_image_path mule.user.photo.key
           else
             url = 'https://cdnmundo1.img.sputniknews.com/img/108565/78/1085657854_0:555:1500:1367_1000x541_80_0_0_ab86277e9d4cb8f1a28c69f7cd8438f4.jpg'
           end
         %>
-          <img src= '<%= url %>' />
+          <img src= '<%= url %>', class="card-mule" />
           <div class="card-mule-infos">
             <h2> <%= mule.user.username %></h2>
-            <p><strong>Location: </strong><%= mule.location %></p>
-            <p> <%= mule.description  %></p>
-            <p>Rate: <strong><%= mule.rate_per_km_per_kg %> €</strong></p>
+            <p><strong>📍 </strong><%= mule.location %></p>
           </div>
+            <div class="card-price"><%= mule.rate_per_km_per_kg %>€</div>
         </div>
         <% end %>
       <% end %>

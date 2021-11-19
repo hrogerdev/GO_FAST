@@ -1,6 +1,6 @@
 class MulesController < ApplicationController
   def index
-    
+
     if params[:query].present?
       @mules = PgSearch.multisearch(params[:query]).flat_map do |result|
         if result.searchable.is_a? User
@@ -21,7 +21,7 @@ class MulesController < ApplicationController
         ),
         image_url: helpers.asset_url('mule_marker.png')
       }
-    end
+      end
     end
   end
 
