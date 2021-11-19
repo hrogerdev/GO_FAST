@@ -13,6 +13,7 @@
 
     <div class="cards mx-5">
       <% @mules.each do |mule| %>
+        <%= link_to mule_path(mule) do %>
         <div class="card-mule">
         <%
           if mule.user.photo.attached?
@@ -23,12 +24,13 @@
         %>
           <img src= '<%= url %>' />
           <div class="card-mule-infos">
-            <h2> <%= link_to mule.user.username, mule_path(mule) %></h2>
+            <h2> <%= mule.user.username %></h2>
             <p><strong>Location: </strong><%= mule.location %></p>
             <p> <%= mule.description  %></p>
             <p>Rate: <strong><%= mule.rate_per_km_per_kg %> €</strong></p>
           </div>
         </div>
+        <% end %>
       <% end %>
     </div>
   </div>
@@ -40,4 +42,3 @@
     </div>
   </div>
 </div>
-
