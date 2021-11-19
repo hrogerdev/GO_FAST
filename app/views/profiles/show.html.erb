@@ -12,7 +12,7 @@
     <img class="avatar-large" src="<%= url %>">
     <p class="profile-info">
     A wise man once said <br><br>
-    <i style="text-align:center;"><%= Faker::Quote.jack_handey   %></i>      
+    <i style="text-align:center;">“ <%= Faker::Quote.jack_handey %> ”</i>      
     </p>
 </div>
 
@@ -21,26 +21,7 @@
     <% end %>
 <% end %>
 
-<div class="container mt-5">
-  <%= simple_form_for @mule do |f| %>
-    <div class="row">
-        <div class="col-4">
-          <%= f.input :transportation_means %>
-      </div>
-      <div class="col-4">
-          <%= f.input :location  %>
-      </div>
-        <div class="col-2">
-          <%= f.input :rate_per_km_per_kg, :label => "Price/Km/Kg" %>
-      </div>
 
-      <div class="col-2">
-          <%= f.button :submit, class: "btn-login", style: "width:100%; margin-top:1.8rem;"%>
-      </div>
-
-    </div>
-  <% end %>
-</div>
 
 <div class="content">
   <!-- Nav pills -->
@@ -49,7 +30,10 @@
       <a class="nav-link active" data-toggle="pill" href="#login">Offers sent</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-toggle="pill" href="#regis">jobs</a>
+      <a class="nav-link" data-toggle="pill" href="#regis">Jobs</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="pill" href="#mule"> My Mules</a>
     </li>
   </ul>
 
@@ -102,5 +86,54 @@
         </div>
       <% end %>
     </div>
+
+
+
+    <div id="mule" class=" tab-pane fade">
+        <div class="container m-5">
+        <%= simple_form_for @mule do |f| %>
+            <div class="row">
+                <div class="col-4">
+                <%= f.input :transportation_means %>
+            </div>
+            <div class="col-4">
+                <%= f.input :location  %>
+            </div>
+                <div class="col-2">
+                <%= f.input :rate_per_km_per_kg, :label => "Price/Km/Kg" %>
+            </div>
+
+            <div class="col-2">
+                <%= f.button :submit, class: "btn-login", style: "width:100%; margin-top:1.8rem;", value: "Become a Mule"%>
+            </div>
+
+            </div>
+        <% end %>
+        </div>
+      <% if @mules %>
+        <div class="grid">
+        <% @mules.each do |mule|%>
+        <%= link_to mule_path(mule) do %>
+          <div class="card-mule col-4" style="padding:0;">
+            <%
+            if mule.user.photo.attached?
+                url = cl_image_path mule.user.photo.key, height: 300, crop: :fill
+            else
+                url = 'https://cdnmundo1.img.sputniknews.com/img/108565/78/1085657854_0:555:1500:1367_1000x541_80_0_0_ab86277e9d4cb8f1a28c69f7cd8438f4.jpg'
+            end
+            %>
+            <img src= '<%= url %>' />
+            <div class="card-mule-infos">
+                <h2> <%= mule.user.username %></h2>
+                <p><strong>Location: </strong><%= mule.location %></p>
+                <p> <%= mule.description  %></p>
+                <p>Rate: <strong><%= mule.rate_per_km_per_kg %> €</strong></p>
+            </div>
+            </div>
+            <% end %>
+        <% end %>
+      <% end %>
+    </div>
+
   </div>
 </div>
