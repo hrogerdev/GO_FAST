@@ -25,9 +25,9 @@
           <img src= '<%= url %>' />
           <div class="card-mule-infos">
             <h2> <%= mule.user.username %></h2>
-            <p><strong>Location: </strong><%= mule.location %></p>
+            <p><strong><i class="fas fa-map-marker-alt"></i> <%= mule.location %></strong></p>
             <p> <%= mule.description  %></p>
-            <p>Rate: <strong><%= mule.rate_per_km_per_kg %> €</strong></p>
+            <p> dès <strong><%= mule.rate_per_km_per_kg %>€</strong> le <strong>kilo</strong> par <strong>km</strong></p>
           </div>
         </div>
         <% end %>
