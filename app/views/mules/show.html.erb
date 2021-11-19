@@ -7,7 +7,7 @@
 %>
 
 <div class="container d-flex justify-content-between align-items-center mt-5 pt-5 ml-5">
-  <div class="mule-info-card m-5 col-12 col-lg-8" >
+  <div class="mule-info-card m-5  col-sm-9" >
     <div class="mule-profile-infos">
       <img src='<%= url %>' class="card-mule-user avatar-bordered" />
       <div class="mule-details">
@@ -16,26 +16,25 @@
       </div>
     </div>
     <div class="mule-profile-description p-4 ">
-      <p><strong>A bit of me:</strong> <%= @mule.description %></p>
-      <p><strong>I do my services by:</strong> <%= @mule.transportation_means %></p>
+      <p>About this mule: <%= @mule.description %></p>
+      <p>I deliver by: <%= @mule.transportation_means %></p>
+      <p>📍 <%= @mule.location %></p>
     </div>
   </div>
   <% unless current_user.mules.include?(@mule) %>
-    <div class="mule-info-card m-5 col-lg-4">
-      <h2 class="py-3">Offer a job :</h2>
+    <div class="m-1 col-sm-3 offer-form">
+      <h2 class="py-3">Offer a job</h2>
           <%= simple_form_for([@mule, @offer], html: { data: { controller: "offer-update", offer_update_commission_value: @mule.rate_per_km_per_kg } }) do |f|%>
-          <div class="d-flex fas fa-cannabis"> <%= f.input :drug_type, label: false,  placeholder: 'drug type' %> </div>
-          <%# , label_HTML: {class:"fas fa-cannabis"} %>
-          <div class="d-flex fas fa-weight-hanging"> <%= f.input :weight, label: false,  placeholder: 'weight', label_HTML: {class:"fas fa-weight-hanging"}, input_html: { data: { offer_update_target: "weight", action: "change->offer-update#computeCommission" } } %> </div>
 
 
-          <div class="d-flex fas fa-sign-out-alt"> <%= f.input :starting_point, label: false,  placeholder: 'starting point', label_HTML: {class:"fas fa-sign-out-alt"}, input_html: { data: { offer_update_target: "start", action: "blur->offer-update#computeDistance" } } %></div>
+          <div class="d-flex"><div class="d-flex fas fa-sign-out-alt"> </div><%= f.input :starting_point, label: false,  placeholder: 'starting point', label_HTML: {class:"fas fa-sign-out-alt"}, input_html: { data: { offer_update_target: "start", action: "blur->offer-update#computeDistance" } } %></div>
 
+          <div class="d-flex"><div class="d-flex fas fa-flag-checkered"></div> <%= f.input :destination, label: false,  placeholder: 'destination', label_HTML: {class:"fas fa-flag-checkered"}, input_html: { data: { offer_update_target: "destination", action: "blur->offer-update#computeDistance" } }  %></div>
 
-          <div class="d-flex fas fa-flag-checkered"> <%= f.input :destination, label: false,  placeholder: 'destination', label_HTML: {class:"fas fa-flag-checkered"}, input_html: { data: { offer_update_target: "destination", action: "blur->offer-update#computeDistance" } }  %></div>
+          <div class="d-flex"><div class="d-flex fas fa-cannabis"> </div><%= f.input :drug_type, label: false,  placeholder: 'drug type' %> </div>
+          <div class="d-flex"><div class="d-flex fas fa-weight-hanging"></div> <%= f.input :weight, label: false,  placeholder: 'weight', label_HTML: {class:"fas fa-weight-hanging"}, input_html: { data: { offer_update_target: "weight", action: "change->offer-update#computeCommission" } } %> </div>
 
-
-          <div class="d-flex justify-content-center mt-2 btn btn-success">  <%= f.submit "Offer 0€", data: { offer_update_target: "submit"} %></div>
+          <div class="d-flex justify-content-center m-2 btn btn-success"> <%= f.submit "Offer 0€", class: "btn", data: { offer_update_target: "submit"} %></div>
 
         <% end %>
     </div>
